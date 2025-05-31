@@ -12,3 +12,4 @@ prune-30/
 prune-40/
 quantized-bert/
 shrunk_bert_agnews_structured-20-6/
+*.txt
