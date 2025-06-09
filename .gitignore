@@ -15,3 +15,10 @@ shrunk_bert_agnews_structured-20-6/
 *.txt
 *.pth
 *.jsonl
+
+# Added by AI Refactoring Agent
+*.pid
+outputs/
+train_mlp_models/*.pth
+train_mlp_models/*.json
+models/

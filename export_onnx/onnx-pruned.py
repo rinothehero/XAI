@@ -2,7 +2,7 @@ import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 # 1. 모델 로드
-model_path = "./pruned_bert_agnews_structured-20-6"
+model_path = "models/pruned/bert_agnews_20pct_v1" # Placeholder
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 
@@ -19,7 +19,7 @@ inputs = {k: v.to(device) for k, v in inputs.items()}
 torch.onnx.export(
     model,
     (inputs["input_ids"], inputs["attention_mask"]),
-    "pruned_bert.onnx",
+    "models/onnx/pruned_bert_non_shrunk.onnx",
     input_names=["input_ids", "attention_mask"],
     output_names=["logits"],
     dynamic_axes={
@@ -31,4 +31,4 @@ torch.onnx.export(
     do_constant_folding=True
 )
 
-print("✅ ONNX export 완료: pruned_bert.onnx")
+print("✅ ONNX export 완료: models/onnx/pruned_bert_non_shrunk.onnx")
